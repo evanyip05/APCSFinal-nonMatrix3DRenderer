@@ -1,0 +1,84 @@
+TODO:
+
+    method 3: viewpoint projection plane 5/16
+        - light source ?
+        - bring back camera (point + vector + plane)
+        - get it to work... cast vPlane vN from vertices
+
+    - way to assemble vertexes into triangle mesh (also get correct paint order or determine front face)
+    - vertex obj for mesh build (p3D and a number from .obj)
+
+Notes:
+    axis are:
+        +y up
+        -y down
+        +x left
+        -x right
+        +z towards user
+        -z away from user
+
+Canceled:
+
+    // 6/4 wont be needed for ortho project (not doing persp project)
+    - specifically reflect light off vertices and intersect those with the plane ?
+
+    // 5/23 replaced by projection using law of cosines and lengths
+    - level the plane, so 2d points are obtainable from the projection plane
+    // using angles and references
+    - take a viewpoint and put it some distance from a projection plane
+
+    // stl files are terrible, it's in binary, obj better
+    - stl read (binary/ascii)
+
+    // no longer using txt
+    - file reading mesh from txt
+    - file format delimiters and parser eg: #comment ,nextValSet :nextVal ;newLine
+
+    // eew matrix math, not doing
+    method 1 (rotation translation and mutators?) 5/9
+    - better normal vector/vertex solution (custom plane enum)
+    - textures/raytracing/surfaces?
+    - draw poly from center
+    - poly rotate about axis?
+        - define axis using found symmetry
+        - change math to rotate around symmetry instead of 0,0,0
+
+    // too inefficient to run smoothly, (tested by making a 2d rayCaster)
+    method 2 (raycasting and projection) 5/9
+    - camera view (stop rotating and translating objects, change the view of the camera to display the objects differently)
+    - raycast? makes rotation irrelevant
+    - plane line intersection for raycasting
+
+    // old, new projection is different
+    - ortho projection
+
+Done:
+
+    method 3: 5/18
+        - everything never moves. only you move, and see things from your angles, lines are cast from their points to you (ortho using camera vector normal)
+        - cast a ray from the object through the plane to the viewpoint
+            - use parametric equations to find that point, then ust the normal vector to "flatten the plane"
+            - angle correction 0 -> 360 instead of 0 -> 180 using relative down
+        - display the projection plane onto the screen
+        - rotate plane about its axis (usually camera only)
+        - file generation from 3d object file (obj, redo for method 3)
+        - dont draw things behind other verticies, use face normals from wind order in models
+
+    - function generator? any num parameter function 5/9
+    - use terms and expressions/functions
+    - use final classes not packages
+
+    basic stuff (houseKeeping) 5/1
+    - 3D geometry (point line plane) updated 5/18 5/23
+    - 3D logic
+        - vector functions added ~6/1 (cross product, scaling, etc)
+        - math
+            - tuple
+            - triple
+            - trig (see Utilities)
+        - point movement and display
+    - display
+        - panel
+        - frame
+        - drawable interface for drawSelf for cleanliness
+
